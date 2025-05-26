@@ -14,7 +14,7 @@ def main():
     start = time.monotonic()    
     response = client.responses.create(
         model="claude-3-haiku-proxy",
-        messages = [
+        input = [
             {"role": "system", "content": "Help if you can."},
             {
                 "role": "user",
@@ -29,8 +29,11 @@ def main():
     end = time.monotonic()
     print(f"Response time: {end - start:.2f} seconds")
     print (response)
-    response_message = response.choices[0].message
-    print(f"Response message: {response_message.content}")
+    try:
+        out = response.output[0].content[0].text
+    except (AttributeError, IndexError, TypeError):
+        out = None    
+    print(f"Response message: {out}")
     
 
 if __name__ == "__main__":
