@@ -5,7 +5,9 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
-    "boto3>=1.38.23",
     "dotenv>=0.9.9",
-    "litellm>=1.71.1",
+    "litellm[proxy]>=1.71.1",
 ]
+
+[[tool.uv.index]]
+url = "https://area22-493334834594.d.codeartifact.eu-west-1.amazonaws.com/pypi/area22/simple/"
